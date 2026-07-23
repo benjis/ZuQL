@@ -1,0 +1,5 @@
+---
+data_sources:
+- id: account
+  queryable: true
+  names: {}

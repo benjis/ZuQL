@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["question", "query_spec", "resolutions", "plan", "compiled_query", "warnings", "explanation"],
+  "properties": {
+    "question": {"type": "string", "minLength": 1},
+    "query_spec": {"$ref": "#/$defs/querySpec"},
+    "resolutions": {"type": "array", "items": {"$ref": "#/$defs/resolution"}},
+    "plan": {"$ref": "#/$defs/queryPlan"},
+    "compiled_query": {"$ref": "#/$defs/compiledQuery"},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "explanation": {"$ref": "#/$defs/explanation"}
+  },
+  "$defs": {
+    "requestedField": {
+      "type": "object", "additionalProperties": false, "required": ["concept"],
+      "properties": {"concept": {"type": "string", "minLength": 1}}
+    },
+    "conceptFilter": {
+      "type": "object", "additionalProperties": false, "required": ["concept", "operator", "value"],
+      "properties": {
+        "concept": {"type": "string", "minLength": 1},
+        "operator": {"enum": ["equals", "not_equals", "in", "not_in", "gt", "gte", "lt", "lte", "contains"]},
+        "value": {"oneOf": [
+          {"type": ["string", "number", "boolean", "null"]},
+          {"type": "array", "items": {"type": ["string", "number", "boolean", "null"]}}
+        ]}
+      }
+    },
+    "querySpec": {
+      "type": "object", "additionalProperties": false,
+      "required": ["intent", "requested_entities", "requested_fields", "filters", "metrics", "dimensions", "group_by", "order_by", "limit", "backend_preference"],
+      "properties": {
+        "intent": {"enum": ["detail_export", "aggregate", "count"]},
+        "requested_entities": {"type": "array", "items": {"type": "string"}},
+        "requested_fields": {"type": "array", "items": {"$ref": "#/$defs/requestedField"}},
+        "filters": {"type": "array", "items": {"$ref": "#/$defs/conceptFilter"}},
+        "metrics": {"type": "array", "items": {"type": "string"}},
+        "dimensions": {"type": "array", "items": {"type": "string"}},
+        "group_by": {"type": "array", "items": {"type": "string"}},
+        "order_by": {"type": "array"},
+        "limit": {"type": "integer", "minimum": 1},
+        "backend_preference": {"enum": ["auto", "data_query", "snowflake"]}
+      }
+    },
+    "resolution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["input", "resolved_to", "kind", "confidence", "alternatives"],
+      "properties": {
+        "input": {"type": "string", "minLength": 1},
+        "resolved_to": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["field", "metric", "dimension", "object"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "alternatives": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "selection": {
+      "type": "object", "additionalProperties": false, "required": ["alias"],
+      "properties": {
+        "field": {"type": ["string", "null"]},
+        "metric": {"type": ["string", "null"]},
+        "alias": {"type": "string"}
+      }
+    },
+    "join": {
+      "type": "object", "additionalProperties": false, "required": ["relationship", "join_type"],
+      "properties": {"relationship": {"type": "string"}, "join_type": {"enum": ["inner", "left"]}}
+    },
+    "planFilter": {
+      "type": "object", "additionalProperties": false, "required": ["field", "operator", "value"],
+      "properties": {
+        "field": {"type": "string"},
+        "operator": {"enum": ["=", "!=", ">", ">=", "<", "<=", "IN", "NOT IN", "LIKE"]},
+        "value": {}
+      }
+    },
+    "queryPlan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["backend", "root_object", "select", "joins", "filters", "group_by", "order_by", "limit", "grain", "warnings"],
+      "properties": {
+        "backend": {"enum": ["data_query", "snowflake"]},
+        "root_object": {"type": "string"},
+        "select": {"type": "array", "items": {"$ref": "#/$defs/selection"}},
+        "joins": {"type": "array", "items": {"$ref": "#/$defs/join"}},
+        "filters": {"type": "array", "items": {"$ref": "#/$defs/planFilter"}},
+        "group_by": {"type": "array", "items": {"type": "string"}},
+        "order_by": {"type": "array"},
+        "limit": {"type": "integer", "minimum": 1},
+        "grain": {"type": "string"},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "compiledQuery": {
+      "type": "object", "additionalProperties": false, "required": ["backend", "sql", "warnings"],
+      "properties": {
+        "backend": {"enum": ["data_query", "snowflake"]},
+        "sql": {"type": "string", "minLength": 1},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "explanation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["summary", "resolutions", "root", "joins", "grain", "grouping"],
+      "properties": {
+        "summary": {"type": "string", "minLength": 1},
+        "resolutions": {"type": "array", "items": {"type": "string"}},
+        "root": {"type": "string", "minLength": 1},
+        "joins": {"type": "array", "items": {"type": "string"}},
+        "grain": {"type": "string", "minLength": 1},
+        "grouping": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

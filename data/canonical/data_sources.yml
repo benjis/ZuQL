@@ -1,0 +1,2455 @@
+---
+schema_version: 1
+policy:
+  default: include exports-and-reports Data Sources with local metadata
+  manual_includes:
+  - product_rate_plan
+  - payment_run
+  - payment_method_snapshot
+  excludes:
+  - order_contact
+  - notification_history_email_event
+  unverified_names: allowed in registry but require warnings before physical SQL compilation
+sources:
+  extracted_data_sources:
+    path: data/extracted/zuora_data_sources.yml
+    sha256: e19027965d39ca66173e8c8c78071ed6d81d58a9644649741d686e0daa584111
+    role: authoritative_public_data_source_extract
+  openapi:
+    path: HTML/openapi/api.yaml
+    sha256: 5cb952b998f672d411ad11e0d1fde2b658689dc701fd0f63b4b9ed6441811073
+    role: supplemental_api_schema_not_data_query_authority
+  object_model:
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    role: official_relationship_evidence
+data_sources:
+- id: account
+  display_name: Account
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Account
+    object_model: Account
+    data_query:
+      name: Account
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Account
+  source_record: HTML/account.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: accounting_code
+  display_name: Accounting Code
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Accounting Code
+    object_model: Accounting Code
+    data_query:
+      name: Accounting Code
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Accounting Code
+  source_record: HTML/accounting_code.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: application_group
+  display_name: Application Group
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Application Group
+    object_model: Application Group
+    data_query:
+      name: Application Group
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Application Group
+  source_record: HTML/application_group.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ar_transaction
+  display_name: AR Transaction
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: AR Transaction
+    object_model: AR Transaction
+    data_query:
+      name: AR Transaction
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - AR Transaction
+  source_record: HTML/ar_transaction.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: billing_run
+  display_name: Billing Run
+  aliases:
+  - Bill Run
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Billing Run
+    object_model: Bill Run
+    data_query:
+      name: Billing Run
+      confidence: user_observed
+      verified: true
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Billing Run
+  source_record: HTML/billing_run.html
+  warnings: []
+- id: billing_transaction
+  display_name: Billing Transaction
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Order to Revenue
+  deprecated: false
+  names:
+    data_source: Billing Transaction
+    object_model: Billing Transaction
+    data_query:
+      name: Billing Transaction
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Billing Transaction
+  source_record: HTML/billing_transaction.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: booking_transaction
+  display_name: Booking Transaction
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Order to Revenue
+  deprecated: false
+  names:
+    data_source: Booking Transaction
+    object_model: Booking Transaction
+    data_query:
+      name: Booking Transaction
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Booking Transaction
+  source_record: HTML/booking_transaction.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: contact
+  display_name: Contact
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Contact
+    object_model: Contact
+    data_query:
+      name: Contact
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Entity
+  source_record: HTML/contact.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_balance_adjustment
+  display_name: Credit Balance Adjustment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Credit Balance
+  deprecated: true
+  names:
+    data_source: Credit Balance Adjustment
+    object_model: Credit Balance Adjustment
+    data_query:
+      name: Credit Balance Adjustment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Balance Adjustment
+  source_record: HTML/credit_balance_adjustment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_memo
+  display_name: Credit Memo
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Memo
+    object_model: Credit Memo
+    data_query:
+      name: Credit Memo
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Memo
+  source_record: HTML/credit_memo.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_memo_application
+  display_name: Credit Memo Application
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Memo Application
+    object_model: Credit Memo Application
+    data_query:
+      name: Credit Memo Application
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Memo Application
+  source_record: HTML/credit_memo_application.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_memo_application_item
+  display_name: Credit Memo Application Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Memo Application Item
+    object_model: Credit Memo Application Item
+    data_query:
+      name: Credit Memo Application Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Memo Application Item
+  source_record: HTML/credit_memo_application_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_memo_item
+  display_name: Credit Memo Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Memo Item
+    object_model: Credit Memo Item
+    data_query:
+      name: Credit Memo Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Memo Item
+  source_record: HTML/credit_memo_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_memo_part
+  display_name: Credit Memo Part
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Memo Part
+    object_model: Credit Memo Part
+    data_query:
+      name: Credit Memo Part
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Memo Part
+  source_record: HTML/credit_memo_part.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_memo_part_item
+  display_name: Credit Memo Part Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Memo Part Item
+    object_model: Credit Memo Part Item
+    data_query:
+      name: Credit Memo Part Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Memo Part Item
+  source_record: HTML/credit_memo_part_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: credit_taxation_item
+  display_name: Credit Taxation Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Credit Taxation Item
+    object_model: Credit Taxation Item
+    data_query:
+      name: Credit Taxation Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Credit Taxation Item
+  source_record: HTML/credit_taxation_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: custom_exchange_rate
+  display_name: Custom Exchange Rate
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Custom Foreign Currency Exchange Rates
+  deprecated: false
+  names:
+    data_source: Custom Exchange Rate
+    object_model: Custom Exchange Rate
+    data_query:
+      name: Custom Exchange Rate
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Entity
+  source_record: HTML/custom_exchange_rate.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: daily_consumption_summary
+  display_name: Daily Consumption Summary
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Prepaid with Drawdown
+  deprecated: false
+  names:
+    data_source: Daily Consumption Summary
+    object_model: Daily Consumption Summary
+    data_query:
+      name: Daily Consumption Summary
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Daily Consumption Summary
+  source_record: HTML/daily_consumption_summary.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: debit_memo
+  display_name: Debit Memo
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Debit Memo
+    object_model: Debit Memo
+    data_query:
+      name: Debit Memo
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Debit Memo
+  source_record: HTML/debit_memo.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: debit_memo_item
+  display_name: Debit Memo Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Debit Memo Item
+    object_model: Debit Memo Item
+    data_query:
+      name: Debit Memo Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Debit Memo Item
+  source_record: HTML/debit_memo_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: debit_taxation_item
+  display_name: Debit Taxation Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Debit Taxation Item
+    object_model: Debit Taxation Item
+    data_query:
+      name: Debit Taxation Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Debit Memo Item
+  source_record: HTML/debit_taxation_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: discount_applied_metrics
+  display_name: Discount Applied Metrics
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Limited Availability
+  deprecated: false
+  names:
+    data_source: Discount Applied Metrics
+    object_model: Discount Applied Metrics
+    data_query:
+      name: Discount Applied Metrics
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Discount Applied Metrics
+  source_record: HTML/discount_applied_metrics.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: gateway_reconciliation_event
+  display_name: Gateway Reconciliation Event
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Gateway Reconciliation Event
+    object_model: Gateway Reconciliation Event
+    data_query:
+      name: Gateway Reconciliation Event
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Event Type
+  source_record: HTML/gateway_reconciliation_event.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: gateway_reconciliation_log
+  display_name: Gateway Reconciliation Log
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Gateway Reconciliation Log
+    object_model: Gateway Reconciliation Log
+    data_query:
+      name: Gateway Reconciliation Log
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Related Object Type
+  source_record: HTML/gateway_reconciliation_log.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: guided_usage
+  display_name: Guided Usage
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Unbilled Usage
+  deprecated: false
+  names:
+    data_source: Guided Usage
+    object_model: Guided Usage
+    data_query:
+      name: Guided Usage
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Guided Usage
+  source_record: HTML/guided_usage.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: hpm_recaptcha_validation_result
+  display_name: HPM reCAPTCHA Validation Result Data Source
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: HPM reCAPTCHA Validation Result Data Source
+    object_model: HPM reCAPTCHA Validation Result Data Source
+    data_query:
+      name: HPM reCAPTCHA Validation Result Data Source
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - HPM reCAPTCHA Validation Result
+  source_record: HTML/hpm_recaptcha_validation_result.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: hpm_smart_bot_attacking_prevention_audit
+  display_name: HPM Smart Bot Attacking Prevention
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: HPM Smart Bot Attacking Prevention
+    object_model: HPM Smart Bot Attacking Prevention
+    data_query:
+      name: HPM Smart Bot Attacking Prevention
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - HPM Smart Bot Attacking Prevention Audit
+  source_record: HTML/hpm_smart_bot_attacking_prevention.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: invoice
+  display_name: Invoice
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Invoice
+    object_model: Invoice
+    data_query:
+      name: Invoice
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Invoice
+  source_record: HTML/invoice.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: invoice_adjustment
+  display_name: Invoice Adjustment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: true
+  names:
+    data_source: Invoice Adjustment
+    object_model: Invoice Adjustment
+    data_query:
+      name: Invoice Adjustment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Invoice Adjustment
+  source_record: HTML/invoice_adjustment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: invoice_item
+  display_name: Invoice Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Invoice Item
+    object_model: Invoice Item
+    data_query:
+      name: Invoice Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Invoice Item
+  source_record: HTML/invoice_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: invoice_item_adjustment
+  display_name: Invoice Item Adjustment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: true
+  names:
+    data_source: Invoice Item Adjustment
+    object_model: Invoice Item Adjustment
+    data_query:
+      name: Invoice Item Adjustment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Invoice Item Adjustment
+  source_record: HTML/invoice_item_adjustment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: invoice_payment
+  display_name: Invoice Payment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: true
+  names:
+    data_source: Invoice Payment
+    object_model: Invoice Payment
+    data_query:
+      name: Invoice Payment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Invoice Payment
+  source_record: HTML/invoice_payment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: journal_entry_item
+  display_name: Journal Entry Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance
+  deprecated: false
+  names:
+    data_source: Journal Entry Item
+    object_model: Journal Entry Item
+    data_query:
+      name: Journal Entry Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Journal Entry Item
+  source_record: HTML/journal_entry_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: notification_history_email
+  display_name: Notification History - Email
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Notification History - Email
+    object_model: Notification History - Email
+    data_query:
+      name: Notification History - Email
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - EmailHistory
+  source_record: HTML/notification_history_email.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: notification_history_callout
+  display_name: Notification History - Callout
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Notification History - Callout
+    object_model: Notification History - Callout
+    data_query:
+      name: Notification History - Callout
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - CalloutHistory
+  source_record: HTML/notification_history_callout.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order
+  display_name: Order
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order
+    object_model: Order
+    data_query:
+      name: Order
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order
+  source_record: HTML/order.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_action
+  display_name: Order Action
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Action
+    object_model: Order Action
+    data_query:
+      name: Order Action
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Action
+  source_record: HTML/order_action.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_elp
+  display_name: Order Elp
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Elp
+    object_model: Order Elp
+    data_query:
+      name: Order Elp
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Elp
+  source_record: HTML/order_elp.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_item
+  display_name: Order Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Item
+    object_model: Order Item
+    data_query:
+      name: Order Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Item
+  source_record: HTML/order_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_line_item
+  display_name: Order Line Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Line Item
+    object_model: Order Line Item
+    data_query:
+      name: Order Line Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Line Item
+  source_record: HTML/order_line_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_mrr
+  display_name: Order Mrr
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Mrr
+    object_model: Order Mrr
+    data_query:
+      name: Order Mrr
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Mrr
+  source_record: HTML/order_mrr.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_quantity
+  display_name: Order Quantity
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Quantity
+    object_model: Order Quantity
+    data_query:
+      name: Order Quantity
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Quantity
+  source_record: HTML/order_quantity.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_tcb
+  display_name: Order Tcb
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Tcb
+    object_model: Order Tcb
+    data_query:
+      name: Order Tcb
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Tcb
+  source_record: HTML/order_tcb.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: order_tcv
+  display_name: Order Tcv
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Orders
+  deprecated: false
+  names:
+    data_source: Order Tcv
+    object_model: Order Tcv
+    data_query:
+      name: Order Tcv
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Order Tcv
+  source_record: HTML/order_tcv.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment
+  display_name: Payment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment
+    object_model: Payment
+    data_query:
+      name: Payment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment
+  source_record: HTML/payment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_application
+  display_name: Payment Application
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Payment Application
+    object_model: Payment Application
+    data_query:
+      name: Payment Application
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Application
+  source_record: HTML/payment_application.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_application_item
+  display_name: Payment Application Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Item Settlement
+  deprecated: false
+  names:
+    data_source: Payment Application Item
+    object_model: Payment Application Item
+    data_query:
+      name: Payment Application Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Application Item
+  source_record: HTML/payment_application_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_method
+  display_name: Payment Method
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment Method
+    object_model: Payment Method
+    data_query:
+      name: Payment Method
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Method
+  source_record: HTML/payment_method.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_method_snapshot
+  display_name: Payment Method Snapshot
+  aliases: []
+  queryable: true
+  eligibility_source: user_observed_data_query
+  metadata_status: incomplete
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment Method Snapshot
+    object_model: Payment Method Snapshot
+    data_query:
+      name: Payment Method Snapshot
+      confidence: user_observed
+      verified: true
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects: []
+  source_record:
+  warnings:
+  - Field metadata is unavailable; do not invent selectable fields.
+- id: payment_method_transaction_log
+  display_name: Payment Method Transaction Log
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment Method Transaction Log
+    object_model: Payment Method Transaction Log
+    data_query:
+      name: Payment Method Transaction Log
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Method Transaction Log
+  source_record: HTML/payment_method_transaction_log.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_method_update
+  display_name: Payment Method Update
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment Method Update
+    object_model: Payment Method Update
+    data_query:
+      name: Payment Method Update
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Entity
+  source_record: HTML/payment_method_update.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_part
+  display_name: Payment Part
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Payment Part
+    object_model: Payment Part
+    data_query:
+      name: Payment Part
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Part
+  source_record: HTML/payment_part.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_part_item
+  display_name: Payment Part Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Item Settlement
+  deprecated: false
+  names:
+    data_source: Payment Part Item
+    object_model: Payment Part Item
+    data_query:
+      name: Payment Part Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Part Item
+  source_record: HTML/payment_part_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_run
+  display_name: Payment Run
+  aliases: []
+  queryable: true
+  eligibility_source: user_observed_data_query
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment Run
+    object_model: Payment Run
+    data_query:
+      name: Payment Run
+      confidence: user_observed
+      verified: true
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Run
+  source_record: HTML/payment_run.html
+  warnings: []
+- id: payment_schedule
+  display_name: Payment Schedule
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Payment Schedule
+  deprecated: false
+  names:
+    data_source: Payment Schedule
+    object_model: Payment Schedule
+    data_query:
+      name: Payment Schedule
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Schedule
+  source_record: HTML/payment_schedule.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_schedule_item
+  display_name: Payment Schedule Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Payment Schedule
+  deprecated: false
+  names:
+    data_source: Payment Schedule Item
+    object_model: Payment Schedule Item
+    data_query:
+      name: Payment Schedule Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Schedule Item
+  source_record: HTML/payment_schedule_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_schedule_item_payment
+  display_name: Payment Schedule Item Payment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Payment Schedule
+  deprecated: false
+  names:
+    data_source: Payment Schedule Item Payment
+    object_model: Payment Schedule Item Payment
+    data_query:
+      name: Payment Schedule Item Payment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Schedule Item Payment
+  source_record: HTML/payment_schedule_item_payment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: payment_transaction_log
+  display_name: Payment Transaction Log
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Payment Transaction Log
+    object_model: Payment Transaction Log
+    data_query:
+      name: Payment Transaction Log
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Transaction Log
+  source_record: HTML/payment_transaction_log.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: prepaid_balance_fund
+  display_name: Prepaid Balance Fund
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Prepaid with Drawdown
+  deprecated: false
+  names:
+    data_source: Prepaid Balance Fund
+    object_model: Prepaid Balance Fund
+    data_query:
+      name: Prepaid Balance Fund
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Prepaid Balance Fund
+  source_record: HTML/prepaid_balance_fund.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: prepaid_validity_period_summary
+  display_name: Prepaid Validity Period Summary
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Prepaid with Drawdown
+  deprecated: false
+  names:
+    data_source: Prepaid Validity Period Summary
+    object_model: Prepaid Validity Period Summary
+    data_query:
+      name: Prepaid Validity Period Summary
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Prepaid Validity Period Summary
+  source_record: HTML/prepaid_validity_period_summary.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: processed_usage
+  display_name: Processed Usage
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Processed Usage
+    object_model: Processed Usage
+    data_query:
+      name: Processed Usage
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Processed Usage
+  source_record: HTML/processed_usage.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: product
+  display_name: Product
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Product
+    object_model: Product
+    data_query:
+      name: Product
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Product
+  source_record: HTML/product.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: product_rate_plan_charge
+  display_name: Product Rate Plan Charge
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Product Rate Plan Charge
+    object_model: Product Rate Plan Charge
+    data_query:
+      name: Product Rate Plan Charge
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - ProductRatePlanCharge
+  source_record: HTML/product_rate_plan_charge.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: product_rate_plan_charge_tier
+  display_name: Product Rate Plan Charge Tier
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Product Rate Plan Charge Tier
+    object_model: Product Rate Plan Charge Tier
+    data_query:
+      name: Product Rate Plan Charge Tier
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Product Rate Plan Charge Tier
+  source_record: HTML/product_rate_plan_charge_tier.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp
+  display_name: Ramp
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Ramp
+    object_model: Ramp
+    data_query:
+      name: Ramp
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Ramp
+  source_record: HTML/ramp.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp_interval
+  display_name: RampInterval
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: RampInterval
+    object_model: RampInterval
+    data_query:
+      name: RampInterval
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - RampInterval
+  source_record: HTML/ramp_interval.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp_interval_metrics
+  display_name: RampIntervalMetrics
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: RampIntervalMetrics
+    object_model: RampIntervalMetrics
+    data_query:
+      name: RampIntervalMetrics
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - RampIntervalMetrics
+  source_record: HTML/ramp_interval_metrics.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp_interval_mrr
+  display_name: RampIntervalMrr
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: RampIntervalMrr
+    object_model: RampIntervalMrr
+    data_query:
+      name: RampIntervalMrr
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - RampIntervalMrr
+  source_record: HTML/ramp_interval_mrr.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp_interval_delta_metrics
+  display_name: RampIntervalDeltaMetrics
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: RampIntervalDeltaMetrics
+    object_model: RampIntervalDeltaMetrics
+    data_query:
+      name: RampIntervalDeltaMetrics
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - RampIntervalDeltaMetrics
+  source_record: HTML/ramp_interval_delta_metrics.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp_interval_delta_mrr
+  display_name: RampIntervalDeltaMrr
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: RampIntervalDeltaMrr
+    object_model: RampIntervalDeltaMrr
+    data_query:
+      name: RampIntervalDeltaMrr
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - RampIntervalDeltaMrr
+  source_record: HTML/ramp_interval_delta_mrr.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: ramp_interval_delta_quantity
+  display_name: RampIntervalDeltaQuantity
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: RampIntervalDeltaQuantity
+    object_model: RampIntervalDeltaQuantity
+    data_query:
+      name: RampIntervalDeltaQuantity
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - RampIntervalDeltaQuantity
+  source_record: HTML/ramp_interval_delta_quantity.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: rate_plan
+  display_name: Rate Plan
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Rate Plan
+    object_model: Rate Plan
+    data_query:
+      name: Rate Plan
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Entity
+  source_record: HTML/rate_plan.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: rate_plan_charge
+  display_name: Rate Plan Charge
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Rate Plan Charge
+    object_model: Rate Plan Charge
+    data_query:
+      name: Rate Plan Charge
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Rate Plan Charge
+  source_record: HTML/rate_plan_charge.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: rate_plan_charge_tier
+  display_name: Rate Plan Charge Tier
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Rate Plan Charge Tier
+    object_model: Rate Plan Charge Tier
+    data_query:
+      name: Rate Plan Charge Tier
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Rate Plan Charge Tier
+  source_record: HTML/rate_plan_charge_tier.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: rating_result
+  display_name: Rating Result
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Unbilled Usage
+  deprecated: false
+  names:
+    data_source: Rating Result
+    object_model: Rating Result
+    data_query:
+      name: Rating Result
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Rating Result
+  source_record: HTML/rating_result.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund
+  display_name: Refund
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Refund
+    object_model: Refund
+    data_query:
+      name: Refund
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Refund
+  source_record: HTML/refund.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund_application
+  display_name: Refund Application
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Refund Application
+    object_model: Refund Application
+    data_query:
+      name: Refund Application
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Refund Application
+  source_record: HTML/refund_application.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund_application_item
+  display_name: Refund Application Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Item Settlement
+  deprecated: false
+  names:
+    data_source: Refund Application Item
+    object_model: Refund Application Item
+    data_query:
+      name: Refund Application Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Refund Item Application
+  source_record: HTML/refund_application_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund_invoice_payment
+  display_name: Refund Invoice Payment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: true
+  names:
+    data_source: Refund Invoice Payment
+    object_model: Refund Invoice Payment
+    data_query:
+      name: Refund Invoice Payment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Refund Invoice Payment
+  source_record: HTML/refund_invoice_payment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund_part
+  display_name: Refund Part
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Settlement
+  deprecated: false
+  names:
+    data_source: Refund Part
+    object_model: Refund Part
+    data_query:
+      name: Refund Part
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Refund Part
+  source_record: HTML/refund_part.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund_part_item
+  display_name: Refund Part Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Invoice Item Settlement
+  deprecated: false
+  names:
+    data_source: Refund Part Item
+    object_model: Refund Part Item
+    data_query:
+      name: Refund Part Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Refund Part Item
+  source_record: HTML/refund_part_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: refund_transaction_log
+  display_name: Refund Transaction Log
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Refund Transaction Log
+    object_model: Refund Transaction Log
+    data_query:
+      name: Refund Transaction Log
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Payment Transaction Log
+  source_record: HTML/refund_transaction_log.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_charge_summary_item
+  display_name: Revenue Charge Summary Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Charge Summary Item
+    object_model: Revenue Charge Summary Item
+    data_query:
+      name: Revenue Charge Summary Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Charge Summary Item
+  source_record: HTML/revenue_charge_summary_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_event_item
+  display_name: Revenue Event Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Event Item
+    object_model: Revenue Event Item
+    data_query:
+      name: Revenue Event Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Event Item
+  source_record: HTML/revenue_event_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_event_item_credit_memo_item
+  display_name: Revenue Event Item Credit Memo Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Event Item Credit Memo Item
+    object_model: Revenue Event Item Credit Memo Item
+    data_query:
+      name: Revenue Event Item Credit Memo Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Event Item Credit Memo Item
+  source_record: HTML/revenue_event_item_credit_memo_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_event_item_debit_memo_item
+  display_name: Revenue Event Item Debit Memo Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Event Item Debit Memo Item
+    object_model: Revenue Event Item Debit Memo Item
+    data_query:
+      name: Revenue Event Item Debit Memo Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Event Item Debit Memo Item
+  source_record: HTML/revenue_event_item_debit_memo_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_event_item_invoice_item
+  display_name: Revenue Event Item Invoice Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Event Item Invoice Item
+    object_model: Revenue Event Item Invoice Item
+    data_query:
+      name: Revenue Event Item Invoice Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Event Item Invoice Item
+  source_record: HTML/revenue_event_item_invoice_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_event_item_invoice_item_adjustment
+  display_name: Revenue Event Item Invoice Item Adjustment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Event Item Invoice Item Adjustment
+    object_model: Revenue Event Item Invoice Item Adjustment
+    data_query:
+      name: Revenue Event Item Invoice Item Adjustment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Event Item Invoice Item Adjustment
+  source_record: HTML/revenue_event_item_invoice_item_adjustment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_recognition_events_transaction
+  display_name: Revenue Recognition Events Transaction
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Order to Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Recognition Events Transaction
+    object_model: Revenue Recognition Events Transaction
+    data_query:
+      name: Revenue Recognition Events Transaction
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Recognition Events Transaction
+  source_record: HTML/revenue_recognition_events_transaction.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_schedule_item
+  display_name: Revenue Schedule Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Schedule Item
+    object_model: Revenue Schedule Item
+    data_query:
+      name: Revenue Schedule Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Schedule Item
+  source_record: HTML/revenue_schedule_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_schedule_item_credit_memo_item
+  display_name: Revenue Schedule Item Credit Memo Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Schedule Item Credit Memo Item
+    object_model: Revenue Schedule Item Credit Memo Item
+    data_query:
+      name: Revenue Schedule Item Credit Memo Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Schedule Item Credit Memo Item
+  source_record: HTML/revenue_schedule_item_credit_memo_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_schedule_item_debit_memo_item
+  display_name: Revenue Schedule Item Debit Memo Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Schedule Item Debit Memo Item
+    object_model: Revenue Schedule Item Debit Memo Item
+    data_query:
+      name: Revenue Schedule Item Debit Memo Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Schedule Item Debit Memo Item
+  source_record: HTML/revenue_schedule_item_debit_memo_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_schedule_item_invoice_item
+  display_name: Revenue Schedule Item Invoice Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Schedule Item Invoice Item
+    object_model: Revenue Schedule Item Invoice Item
+    data_query:
+      name: Revenue Schedule Item Invoice Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Schedule Item Invoice Item
+  source_record: HTML/revenue_schedule_item_invoice_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: revenue_schedule_item_invoice_item_adjustment
+  display_name: Revenue Schedule Item Invoice Item Adjustment
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes:
+  - Zuora Finance - Revenue
+  deprecated: false
+  names:
+    data_source: Revenue Schedule Item Invoice Item Adjustment
+    object_model: Revenue Schedule Item Invoice Item Adjustment
+    data_query:
+      name: Revenue Schedule Item Invoice Item Adjustment
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Revenue Schedule Item Invoice Item Adjustment
+  source_record: HTML/revenue_schedule_item_invoice_item_adjustment.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: stored_credential_profile
+  display_name: Stored Credential Profile
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Stored Credential Profile
+    object_model: Stored Credential Profile
+    data_query:
+      name: Stored Credential Profile
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Stored Credential Profile
+  source_record: HTML/stored_credential_profile.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: subscription
+  display_name: Subscription
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Subscription
+    object_model: Subscription
+    data_query:
+      name: Subscription
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Subscription
+  source_record: HTML/subscription.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: taxation_item
+  display_name: Taxation Item
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Taxation Item
+    object_model: Taxation Item
+    data_query:
+      name: Taxation Item
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Taxation Item
+  source_record: HTML/taxation_item.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: usage
+  display_name: Usage
+  aliases: []
+  queryable: true
+  eligibility_source: public_availability_exports_and_reports
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Usage
+    object_model: Usage
+    data_query:
+      name: Usage
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Usage
+  source_record: HTML/usage.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.
+- id: product_rate_plan
+  display_name: Product Rate Plan
+  aliases: []
+  queryable: true
+  eligibility_source: manual_url_confirmation
+  metadata_status: extracted
+  feature_notes: []
+  deprecated: false
+  names:
+    data_source: Product Rate Plan
+    object_model: Product Rate Plan
+    data_query:
+      name: Product Rate Plan
+      confidence: convention_derived
+      verified: false
+    snowflake:
+      name:
+      confidence: unknown
+      verified: false
+  base_objects:
+  - Product Rate Plan
+  source_record: HTML/product_rate_plan.html
+  warnings:
+  - Data Query physical name is convention-derived and unverified.

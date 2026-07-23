@@ -1,0 +1,93 @@
+---
+schema_version: 1
+metrics:
+- id: current_mrr
+  display_name: Current MRR
+  field: rate_plan_charge.mrr
+  native_grain: rate_plan_charge
+  aggregation: sum
+  aliases:
+  - mrr
+  - monthly recurring revenue
+  - monthly recurring charge revenue
+  warnings:
+  - Zuora MRR is not recognized revenue and excludes one-time and usage charges.
+- id: invoice_charge_amount
+  display_name: Invoice Charge Amount
+  field: invoice_item.charge_amount
+  native_grain: invoice_item
+  aggregation: sum
+  aliases:
+  - invoice item amount
+  - charge amount
+  - invoice item charge amount
+  warnings:
+  - Charge Amount excludes tax, including for tax-inclusive charges.
+- id: invoice_balance
+  display_name: Invoice Balance
+  field: invoice.balance
+  native_grain: invoice
+  aggregation: sum
+  aliases:
+  - outstanding invoice balance
+  - unpaid invoice balance
+  warnings:
+  - Invoice balance is time-sensitive after payments, adjustments, and refunds.
+- id: payment_amount
+  display_name: Payment Amount
+  field: payment.amount
+  native_grain: payment
+  aggregation: sum
+  aliases:
+  - total payment amount
+  - payments total
+  warnings:
+  - Payment Amount is the total payment, not necessarily the amount applied to invoices.
+- id: applied_payment_amount
+  display_name: Applied Payment Amount
+  field: payment.applied_amount
+  native_grain: payment
+  aggregation: sum
+  aliases:
+  - applied amount
+  warnings:
+  - Applied Payment Amount uses Invoice Settlement semantics.
+- id: unapplied_payment_amount
+  display_name: Unapplied Payment Amount
+  field: payment.unapplied_amount
+  native_grain: payment
+  aggregation: sum
+  aliases:
+  - unapplied amount
+  warnings:
+  - Unapplied Payment Amount is not an invoice allocation.
+- id: credit_memo_amount
+  display_name: Credit Memo Amount
+  field: credit_memo.total_amount
+  native_grain: credit_memo
+  aggregation: sum
+  aliases:
+  - credit amount
+  - total credit memo amount
+  warnings:
+  - Credit Memo Total Amount includes taxes.
+- id: debit_memo_amount
+  display_name: Debit Memo Amount
+  field: debit_memo.total_amount
+  native_grain: debit_memo
+  aggregation: sum
+  aliases:
+  - debit amount
+  - total debit memo amount
+  warnings:
+  - Debit Memo Total Amount includes taxes.
+- id: subscription_count
+  display_name: Subscription Count
+  field: subscription.id
+  native_grain: subscription
+  aggregation: count_distinct
+  aliases:
+  - number of subscriptions
+  - distinct subscriptions
+  warnings:
+  - Counts distinct subscription IDs to remain safe after one-to-many joins.

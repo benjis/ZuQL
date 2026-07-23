@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "valid",
+  "counts": {
+    "data_sources": 99,
+    "objects": 99,
+    "fields": 1899,
+    "relationships": 25,
+    "approved_relationships": 21,
+    "metrics": 9,
+    "dimensions": 8,
+    "domains": 8
+  },
+  "mapping_status": {
+    "verified": 3,
+    "unverified": 96,
+    "user_observed": 3,
+    "convention_derived": 96
+  },
+  "quality": {
+    "fields_with_unknown_type": 1864,
+    "fields_without_description": 1715,
+    "incomplete_data_sources": 1,
+    "extraction_warnings": 16
+  },
+  "source_checksums": {
+    "extracted_data_sources": "e19027965d39ca66173e8c8c78071ed6d81d58a9644649741d686e0daa584111"
+  },
+  "errors": []
+}

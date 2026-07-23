@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["backend", "root_object", "select", "joins", "filters", "group_by", "order_by", "limit", "grain", "warnings"],
+  "properties": {
+    "backend": {"enum": ["data_query", "snowflake"]}, "root_object": {"type": "string"},
+    "select": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["alias"], "properties": {"field": {"type": ["string", "null"]}, "metric": {"type": ["string", "null"]}, "alias": {"type": "string"}}}},
+    "joins": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["relationship", "join_type"], "properties": {"relationship": {"type": "string"}, "join_type": {"enum": ["inner", "left"]}}}},
+    "filters": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["field", "operator", "value"], "properties": {"field": {"type": "string"}, "operator": {"enum": ["=", "!=", ">", ">=", "<", "<=", "IN", "NOT IN", "LIKE"]}, "value": {}}}},
+    "group_by": {"type": "array", "items": {"type": "string"}}, "order_by": {"type": "array"},
+    "limit": {"type": "integer", "minimum": 1}, "grain": {"type": "string"},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

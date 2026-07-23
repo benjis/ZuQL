@@ -1,0 +1,87 @@
+Question
+Count active subscriptions
+
+Explanation
+
+Summary
+Intent count on data_query, rooted at subscription, limit 1000.
+
+QuerySpec
+{
+  "intent": "count",
+  "requested_entities": [
+    "Subscription"
+  ],
+  "requested_fields": [],
+  "filters": [
+    {
+      "concept": "Subscription Status",
+      "operator": "equals",
+      "value": "Active"
+    }
+  ],
+  "metrics": [
+    "Subscription Count"
+  ],
+  "dimensions": [],
+  "group_by": [],
+  "order_by": [],
+  "limit": 1000,
+  "backend_preference": "data_query"
+}
+
+Interpretation
+Interpreted as count; entities: Subscription; fields: none.
+
+Resolutions
+Subscription Count → subscription_count (metric, confidence 0.95).
+Subscription → subscription (object, confidence 1.0).
+Subscription Status → subscription_status (dimension, confidence 0.95).
+
+Filters
+subscription.status = "Active".
+
+Metrics
+Metric: subscription_count.
+
+Root
+Planner selected subscription as the root object.
+
+Join path
+No joins required.
+
+Inserted bridges
+No bridge objects inserted.
+
+Grain
+Result grain: subscription.
+
+Grouping
+No grouping.
+
+Limit
+1000
+
+Backend
+Backend: data_query.
+
+Assumptions
+Natural-language interpretation is constrained to the supported MVP domain.
+Generated SQL is a preview and is not executed by ZuQL.
+
+Public canonical model limitation
+ZuQL uses a public canonical model; tenant-specific fields, features, and mappings may differ.
+
+Mapping status
+Mapping status: 1 used object mapping(s) are convention-derived and unverified.
+
+Warnings
+Counts distinct subscription IDs to remain safe after one-to-many joins.
+Data Query object subscription uses convention-derived physical name Subscription.
+
+SQL
+SELECT
+  COUNT(DISTINCT "subscription"."ID") AS "subscription_count"
+FROM "Subscription" AS "subscription"
+WHERE "subscription"."Status" = 'Active'
+LIMIT 1000

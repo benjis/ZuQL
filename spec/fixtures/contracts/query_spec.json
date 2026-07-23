@@ -1,0 +1,1 @@
+{"intent":"detail_export","requested_entities":["subscription"],"requested_fields":[{"concept":"subscription name"}],"filters":[],"metrics":[],"dimensions":[],"group_by":[],"order_by":[],"limit":1000,"backend_preference":"auto"}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["query_spec", "resolutions", "warnings"],
+  "properties": {
+    "query_spec": {"$ref": "query_spec.schema.json"},
+    "resolutions": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["input", "resolved_to", "kind", "confidence", "alternatives"], "properties": {"input": {"type": "string"}, "resolved_to": {"type": "string"}, "kind": {"enum": ["field", "metric", "dimension", "object"]}, "confidence": {"type": "number", "minimum": 0, "maximum": 1}, "alternatives": {"type": "array", "items": {"type": "string"}}}}},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

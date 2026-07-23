@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "intent",
+    "requested_entities",
+    "requested_fields",
+    "filters",
+    "metrics",
+    "dimensions"
+  ],
+  "properties": {
+    "intent": {"enum": ["detail_export", "aggregate", "count"]},
+    "requested_entities": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "requested_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept"],
+        "properties": {
+          "concept": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept", "operator", "value"],
+        "properties": {
+          "concept": {"type": "string", "minLength": 1},
+          "operator": {
+            "enum": ["equals", "not_equals", "in", "not_in", "gt", "gte", "lt", "lte", "contains"]
+          },
+          "value": {
+            "oneOf": [
+              {"type": ["string", "number", "boolean", "null"]},
+              {
+                "type": "array",
+                "items": {"type": ["string", "number", "boolean", "null"]}
+              }
+            ]
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "order_by": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "direction"],
+        "properties": {
+          "field": {"type": "string", "minLength": 1},
+          "direction": {"enum": ["asc", "desc"]}
+        }
+      }
+    },
+    "requested_limit": {"type": "integer", "minimum": 1}
+  }
+}

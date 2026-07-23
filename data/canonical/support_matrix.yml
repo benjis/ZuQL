@@ -1,0 +1,125 @@
+schema_version: 1
+domains:
+  - id: subscriptions
+    display_name: Subscriptions and Charges
+    status: supported
+    capabilities: [detail, count, aggregate, filter, cross_object_join]
+    objects: [account, subscription, rate_plan, rate_plan_charge, rate_plan_charge_tier]
+    relationships:
+      - account.subscription
+      - subscription.rate_plan
+      - rate_plan.rate_plan_charge
+      - rate_plan_charge.rate_plan_charge_tier
+    metrics: [current_mrr, subscription_count]
+    dimensions: [account, subscription, subscription_status, charge, currency]
+    representative_questions:
+      - List active subscriptions
+      - Count active subscriptions
+      - Show MRR by account
+    limitations:
+      - Cross-branch financial aggregation is rejected when fan-out safety cannot be proven.
+
+  - id: product_catalog
+    display_name: Product Catalog
+    status: partial
+    capabilities: [detail, filter, cross_object_join]
+    objects: [product, product_rate_plan, product_rate_plan_charge, product_rate_plan_charge_tier]
+    relationships:
+      - product.product_rate_plan
+      - product_rate_plan.product_rate_plan_charge
+      - product_rate_plan_charge.product_rate_plan_charge_tier
+    metrics: []
+    dimensions: [product]
+    representative_questions:
+      - List products whose name contains Cloud
+      - List product rate plans and their products
+    limitations:
+      - No curated product-catalog aggregate metric is included in the MVP.
+
+  - id: orders
+    display_name: Orders
+    status: partial
+    capabilities: [detail, filter, cross_object_join]
+    objects: [account, order, order_action, order_line_item]
+    relationships: [account.order, order.order_action, order.order_line_item]
+    metrics: []
+    dimensions: []
+    representative_questions:
+      - List orders with their actions
+    limitations:
+      - Order metrics and subscription linkage are not curated for the MVP.
+
+  - id: invoicing
+    display_name: Invoicing
+    status: supported
+    capabilities: [detail, aggregate, filter, cross_object_join]
+    objects: [account, invoice, invoice_item, taxation_item]
+    relationships: [account.invoice, invoice.invoice_item, invoice_item.taxation_item]
+    metrics: [invoice_balance, invoice_charge_amount]
+    dimensions: [account, invoice_date]
+    representative_questions:
+      - Show invoice balance by invoice date
+      - List open invoices with account numbers
+    limitations:
+      - Invoice-item aggregation across the subscription branch is rejected as unsafe.
+
+  - id: payments
+    display_name: Payments
+    status: supported
+    capabilities: [detail, aggregate, filter, cross_object_join]
+    objects: [account, payment]
+    relationships: [account.payment]
+    metrics: [payment_amount, applied_payment_amount, unapplied_payment_amount]
+    dimensions: [account, payment_date]
+    representative_questions:
+      - List payments after 2026-01-01
+      - Show payment amount by payment date for 30 rows
+    limitations:
+      - Payment allocation objects are not connected by a reviewed join in the MVP.
+
+  - id: credit_memos
+    display_name: Credit Memos
+    status: supported
+    capabilities: [detail, aggregate, filter, cross_object_join]
+    objects: [account, credit_memo, credit_memo_item, credit_taxation_item]
+    relationships:
+      - account.credit_memo
+      - credit_memo.credit_memo_item
+      - credit_memo_item.credit_taxation_item
+    metrics: [credit_memo_amount]
+    dimensions: [account]
+    representative_questions:
+      - Show credit memo amount by account
+    limitations:
+      - Currency grouping is not advertised because the curated currency dimension belongs to subscriptions.
+
+  - id: debit_memos
+    display_name: Debit Memos
+    status: supported
+    capabilities: [detail, aggregate, filter, cross_object_join]
+    objects: [account, debit_memo, debit_memo_item, debit_taxation_item]
+    relationships:
+      - account.debit_memo
+      - debit_memo.debit_memo_item
+      - debit_memo_item.debit_taxation_item
+    metrics: [debit_memo_amount]
+    dimensions: [account]
+    representative_questions:
+      - Show debit memo amount by account
+    limitations:
+      - Allocation and settlement execution are outside the MVP.
+
+  - id: usage
+    display_name: Usage
+    status: partial
+    capabilities: [detail, filter]
+    objects: [usage]
+    relationships: []
+    metrics: []
+    dimensions: []
+    representative_questions:
+      - List usage quantity and start date
+      - List usage measured in Each or GB
+    limitations:
+      - Usage is standalone because no reviewed relationship to subscriptions or charges is available.
+      - No curated usage aggregate metric or dimension is included in the MVP.

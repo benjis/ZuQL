@@ -1,0 +1,51 @@
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  SuggestExtensions: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "zuql.gemspec"
+
+RSpec/MultipleExpectations:
+  Max: 6
+
+Metrics/ClassLength:
+  Exclude:
+    - "scripts/**/*"
+    - "lib/zuql/metadata_audit.rb"
+
+Metrics/MethodLength:
+  Exclude:
+    - "scripts/**/*"
+    - "lib/zuql/metadata_audit.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "scripts/**/*"
+    - "lib/zuql/metadata_audit.rb"
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "scripts/**/*"
+    - "lib/zuql/metadata_audit.rb"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "scripts/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/SpecFilePathFormat:
+  Enabled: false

@@ -1,0 +1,63 @@
+---
+schema_version: 1
+dimensions:
+- id: account
+  display_name: Account
+  field: account.name
+  aliases:
+  - customer
+  - account name
+  - customer account
+  warnings: []
+- id: subscription
+  display_name: Subscription
+  field: subscription.name
+  aliases:
+  - contract
+  - subscription name
+  - contract name
+  warnings: []
+- id: subscription_status
+  display_name: Subscription Status
+  field: subscription.status
+  aliases:
+  - status
+  - contract status
+  warnings: []
+- id: charge
+  display_name: Charge
+  field: rate_plan_charge.name
+  aliases:
+  - charge name
+  - rate plan charge
+  warnings: []
+- id: product
+  display_name: Product
+  field: product.name
+  aliases:
+  - product name
+  - catalog product
+  warnings: []
+- id: invoice_date
+  display_name: Invoice Date
+  field: invoice.invoice_date
+  aliases:
+  - billing date
+  - billing document date
+  warnings: []
+- id: payment_date
+  display_name: Payment Date
+  field: payment.effective_date
+  aliases:
+  - payment effective date
+  - effective payment date
+  warnings: []
+- id: currency
+  display_name: Currency
+  field: subscription.currency
+  aliases:
+  - subscription currency
+  - currency code
+  warnings:
+  - Currency is context-dependent; invoice, payment, account, and subscription currencies
+    can differ.

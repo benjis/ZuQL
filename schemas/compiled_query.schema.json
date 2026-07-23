@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["backend", "sql", "warnings"],
+  "properties": {
+    "backend": {"enum": ["data_query", "snowflake"]},
+    "sql": {"type": "string", "minLength": 1},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

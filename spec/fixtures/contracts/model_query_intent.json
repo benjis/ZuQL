@@ -1,0 +1,9 @@
+{
+  "intent": "detail_export",
+  "requested_entities": ["subscription"],
+  "requested_fields": [{"concept": "subscription status"}],
+  "filters": [],
+  "metrics": [],
+  "dimensions": [],
+  "requested_limit": 25
+}

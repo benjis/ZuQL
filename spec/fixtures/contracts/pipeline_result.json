@@ -1,0 +1,50 @@
+{
+  "question": "List subscriptions",
+  "query_spec": {
+    "intent": "detail_export",
+    "requested_entities": ["subscription"],
+    "requested_fields": [{"concept": "subscription name"}],
+    "filters": [],
+    "metrics": [],
+    "dimensions": [],
+    "group_by": [],
+    "order_by": [],
+    "limit": 1000,
+    "backend_preference": "auto"
+  },
+  "resolutions": [
+    {
+      "input": "subscription name",
+      "resolved_to": "subscription.name",
+      "kind": "field",
+      "confidence": 1.0,
+      "alternatives": []
+    }
+  ],
+  "plan": {
+    "backend": "data_query",
+    "root_object": "subscription",
+    "select": [{"field": "subscription.name", "alias": "subscription_name"}],
+    "joins": [],
+    "filters": [],
+    "group_by": [],
+    "order_by": [],
+    "limit": 1000,
+    "grain": "subscription",
+    "warnings": []
+  },
+  "compiled_query": {
+    "backend": "data_query",
+    "sql": "SELECT subscription.Name FROM Subscription LIMIT 1000",
+    "warnings": ["mapping warning"]
+  },
+  "warnings": ["mapping warning"],
+  "explanation": {
+    "summary": "Intent detail_export on data_query, rooted at subscription, limit 1000.",
+    "resolutions": ["subscription name → subscription.name (field, confidence 1.0)."],
+    "root": "Planner selected subscription as the root object.",
+    "joins": ["No joins required."],
+    "grain": "Result grain: subscription.",
+    "grouping": "No grouping."
+  }
+}

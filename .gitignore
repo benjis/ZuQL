@@ -1,0 +1,18 @@
+/.bundle/
+/coverage/
+/pkg/
+/vendor/
+*.gem
+/tools/schema_compiler/.bundle/
+/tools/schema_compiler/coverage/
+.codegraph/
+*.md
+docs/
+html/
+
+# Version the public MVP contract and release evidence.
+!README.md
+!README.zh-CN.md
+!README.ja.md
+docs/*
+scripts/

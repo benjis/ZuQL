@@ -1,0 +1,1 @@
+{"backend":"data_query","root_object":"subscription","select":[{"field":"subscription.name","alias":"subscription_name"}],"joins":[],"filters":[],"group_by":[],"order_by":[],"limit":1000,"grain":"subscription","warnings":[]}

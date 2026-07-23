@@ -1,0 +1,563 @@
+---
+schema_version: 1
+sources:
+  object_model:
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    role: official_relationship_evidence
+relationships:
+- id: product.product_rate_plan
+  from_object: product
+  to_object: product_rate_plan
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: product_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedProductRatePlan
+      property: productId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: product_rate_plan.product_rate_plan_charge
+  from_object: product_rate_plan
+  to_object: product_rate_plan_charge
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: product_rate_plan_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedProductRatePlanCharge
+      property: productRatePlanId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: product_rate_plan_charge.product_rate_plan_charge_tier
+  from_object: product_rate_plan_charge
+  to_object: product_rate_plan_charge_tier
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: product_rate_plan_charge_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedProductRatePlanChargeTier
+      property: productRatePlanChargeId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: account.subscription
+  from_object: account
+  to_object: subscription
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: account_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedSubscription
+      property: accountId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: account.order
+  from_object: account
+  to_object: order
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: account_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: NestedOrderOnExpand
+      property: accountId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: order.order_action
+  from_object: order
+  to_object: order_action
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: order_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedOrderAction
+      property: orderId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: order.order_line_item
+  from_object: order
+  to_object: order_line_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: order_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedOrderLineItem
+      property: orderId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: subscription.rate_plan
+  from_object: subscription
+  to_object: rate_plan
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: subscription_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedRatePlan
+      property: subscriptionId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: rate_plan.rate_plan_charge
+  from_object: rate_plan
+  to_object: rate_plan_charge
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: rate_plan_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedRatePlanCharge
+      property: ratePlanId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: rate_plan_charge.rate_plan_charge_tier
+  from_object: rate_plan_charge
+  to_object: rate_plan_charge_tier
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: rate_plan_charge_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedRatePlanChargeTier
+      property: ratePlanChargeId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: account.invoice
+  from_object: account
+  to_object: invoice
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: account_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedInvoice
+      property: accountId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: invoice.invoice_item
+  from_object: invoice
+  to_object: invoice_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: invoice_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedInvoiceItem
+      property: invoiceId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: invoice_item.taxation_item
+  from_object: invoice_item
+  to_object: taxation_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: invoice_item_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedTaxationItem
+      property: invoiceItemId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: account.payment
+  from_object: account
+  to_object: payment
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: account_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedPayment
+      property: accountId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: payment_run.payment
+  from_object: payment_run
+  to_object: payment
+  cardinality: one_to_many
+  join:
+    from_field:
+    to_field:
+  approved_for_planning: false
+  confidence: unverified
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: payment_method.payment_method_snapshot
+  from_object: payment_method
+  to_object: payment_method_snapshot
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: payment_method_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedPaymentMethodSnapshot
+      property: paymentMethodId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: payment.payment_part
+  from_object: payment
+  to_object: payment_part
+  cardinality: one_to_many
+  join:
+    from_field:
+    to_field:
+  approved_for_planning: false
+  confidence: unverified
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: account.credit_memo
+  from_object: account
+  to_object: credit_memo
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: account_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedCreditMemo
+      property: accountId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: credit_memo.credit_memo_item
+  from_object: credit_memo
+  to_object: credit_memo_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: credit_memo_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedCreditMemoItem
+      property: creditMemoId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: credit_memo_item.credit_taxation_item
+  from_object: credit_memo_item
+  to_object: credit_taxation_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: credit_memo_item_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: NestedCreditTaxationItemOnExpand
+      property: creditMemoItemId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: account.debit_memo
+  from_object: account
+  to_object: debit_memo
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: account_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedDebitMemo
+      property: accountId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: debit_memo.debit_memo_item
+  from_object: debit_memo
+  to_object: debit_memo_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: debit_memo_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: ExpandedDebitMemoItem
+      property: debitMemoId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: debit_memo_item.debit_taxation_item
+  from_object: debit_memo_item
+  to_object: debit_taxation_item
+  cardinality: one_to_many
+  join:
+    from_field: id
+    to_field: debit_memo_item_id
+  approved_for_planning: true
+  confidence: reviewed
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+    openapi:
+      path: HTML/openapi/api.yaml
+      schema: NestedDebitTaxationItemOnExpand
+      property: debitMemoItemId
+      meaning: foreign-key field name and API type evidence
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: payment.refund
+  from_object: payment
+  to_object: refund
+  cardinality: one_to_many
+  join:
+    from_field:
+    to_field:
+  approved_for_planning: false
+  confidence: unverified
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified
+- id: refund.refund_part
+  from_object: refund
+  to_object: refund_part
+  cardinality: one_to_many
+  join:
+    from_field:
+    to_field:
+  approved_for_planning: false
+  confidence: unverified
+  evidence:
+    object_model:
+      path: docs/provenance/zuora-billing-object-model-may-2023.png
+      meaning: relationship and cardinality
+  provenance:
+    kind: official_object_model_image
+    path: docs/provenance/zuora-billing-object-model-may-2023.png
+    sha256: 3abd06da701a5f623a2a5136b76ffabeb36c867491066b5cab47203de0abe9a3
+    review_status: relationship_visible_join_keys_unverified

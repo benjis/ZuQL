@@ -1,0 +1,1 @@
+{"backend":"data_query","sql":"SELECT \"subscription\".\"Name\" AS \"subscription_name\" FROM \"Subscription\" AS \"subscription\" LIMIT 100","warnings":["Data Query object subscription uses convention-derived physical name Subscription."]}

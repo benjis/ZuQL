@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'zuql'
+
+audit = ZuQL::MetadataAudit.new
+report = audit.report
+puts JSON.pretty_generate(report)
+exit(report.fetch('errors').empty? ? 0 : 1)
